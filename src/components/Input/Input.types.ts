@@ -1,4 +1,5 @@
 export interface Props {
-  type?: "primary";
+  type?: 'outline';
   isLoading?: boolean;
+  label?: string;
 }

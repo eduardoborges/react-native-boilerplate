@@ -1,5 +1,5 @@
 import styled from 'styled-components/native';
-import { colors, fonts } from '~/theme';
+import { colors, fonts } from '~/constants';
 import { Props } from './Button.types';
 
 export const Container = styled.TouchableOpacity.attrs({ activeOpacity: 0.8 })<

@@ -1,4 +1,5 @@
 export interface Props {
-  type?: "primary";
+  type?: 'primary';
   isLoading?: boolean;
+  label?: boolean;
 }

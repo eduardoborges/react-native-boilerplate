@@ -1,0 +1,40 @@
+{
+  "project_info": {
+    "project_number": "580625418524",
+    "firebase_url": "https://guapo-app.firebaseio.com",
+    "project_id": "guapo-app",
+    "storage_bucket": "guapo-app.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:580625418524:android:30d60c72571c12faa1d2d9",
+        "android_client_info": {
+          "package_name": "com.bolt.guapo"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "580625418524-tq0b9nf0b6v6l1n4o9gmiuobb7jt3un2.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyCh0Jz0xXrzFE5FXsfW9NcbwKK5qO5MpkU"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "580625418524-tq0b9nf0b6v6l1n4o9gmiuobb7jt3un2.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

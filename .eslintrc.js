@@ -52,6 +52,7 @@ module.exports = {
     "global-require": 0,
     "linebreak-style": [2, "unix"],
     "no-nested-ternary": 0,
+    "react-hooks/exhaustive-deps": "off",
     "lines-between-class-members": [
       1,
       "always",
@@ -101,9 +102,10 @@ module.exports = {
         variables: false
       }
     ],
-    "@typescript-eslint/no-unused-vars": [1, { args: "none" }],
     "@typescript-eslint/no-non-null-assertion": 0,
     "@typescript-eslint/camelcase": 0,
-    "@typescript-eslint/ban-ts-ignore": 0
+    "@typescript-eslint/ban-ts-ignore": 0,
+    "@typescript-eslint/no-unused-vars": "warn",
+    "no-unused-vars": "off",
   }
 };

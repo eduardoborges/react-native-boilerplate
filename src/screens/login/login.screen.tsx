@@ -1,53 +1,101 @@
-/* eslint-disable no-unused-expressions */
-import React, { useState, useRef, useEffect } from 'react';
-import { NativeScrollEvent, NativeSyntheticEvent } from 'react-native';
-import useInterval from '@use-it/interval';
-import { dimensions } from '~/constants';
-import { Slider, Slide } from './login.styles';
+import React from 'react';
+import auth, { FirebaseAuthTypes } from '@react-native-firebase/auth';
+import * as yup from 'yup';
+import onlyNumbers from '~/helpers/onlyNumbers';
+
+import {
+  Wrapper, Container,
+  Header, Body, Footer,
+  Title, Subtitle,
+} from './login.styles';
+
+import {
+  Button, Input, Label,
+} from '~/components';
 
 const HomeScreen: React.FC = () => {
-  const slider = useRef<any>(null);
-  const [active, setActive] = useState(0);
+  const phoneSchema = yup
+    .string()
+    .required('Campo obrigatório')
+    .length(11, 'Número inválido');
 
-  const slideWith = dimensions.fullWidth;
-  const [delay, setDelay] = useState<number|null>(2000);
+  const codeSchema = yup
+    .string()
+    .required('Campo obrigatório')
+    .length(6);
 
-  const onScroll = (event: NativeSyntheticEvent<NativeScrollEvent>) => {
-    setDelay(null);
-    event.stopPropagation();
-    const offsetX = event.nativeEvent.contentOffset.x;
-    const totalSlides = event.nativeEvent.contentSize.width / slideWith;
-    const activeSlide = Math.floor(offsetX / slideWith) % totalSlides;
-    setActive(activeSlide);
-    setTimeout(() => {
-      setDelay(2000);
-    }, 1000);
+  const [phone, setPhone] = React.useState('');
+  const [code, setCode] = React.useState('');
+  const [error, setError] = React.useState('');
+  const [loading, setLoading] = React.useState(false);
+  const [confirm, setConfirm] = React.useState<FirebaseAuthTypes.ConfirmationResult>();
+
+
+  const getConfirmation = async () => {
+    try {
+      const number = await phoneSchema.validate(phone);
+      setLoading(true);
+      const confirmation = await auth().signInWithPhoneNumber(`+55${onlyNumbers(number)}`);
+      setConfirm(confirmation);
+      setLoading(false);
+    } catch (e) {
+      setLoading(false);
+      setError(e.message);
+    }
   };
 
-  useInterval(() => {
-    console.log('interval');
-    setActive((act) => act + 1);
-  }, delay);
-
-  useEffect(() => {
-    console.log(active);
-    slider.current.scrollTo({ x: active * slideWith, y: 0 });
-  }, [active, slideWith]);
+  const signIn = async () => {
+    try {
+      const validatedCode = await codeSchema.validate(code);
+      setLoading(true);
+      await confirm?.confirm(validatedCode);
+      setLoading(false);
+    } catch (e) {
+      setLoading(false);
+      setError(e.message);
+    }
+  };
 
   return (
-    <Slider
-      ref={slider}
-      snapToInterval={dimensions.fullWidth}
-      onScrollEndDrag={onScroll}
-      decelerationRate={0}
-      horizontal
-    >
-      <Slide color="green" />
-      <Slide color="yellow" />
-      <Slide color="blue" />
-      <Slide color="pink" />
-      <Slide color="grey" />
-    </Slider>
+    <Wrapper behavior="height">
+      <Container>
+        <Header>
+          <Title>Bem vindo ao Guapo</Title>
+        </Header>
+
+        <Footer>
+          { !confirm ? (
+            <>
+              <Subtitle>Insira seu número para começar 😍</Subtitle>
+              <Input
+                mask="[00] [0] [0000] [0000]"
+                onChangeText={(_, extracted) => setPhone(extracted || '')}
+                placeholder="Seu número de telefone"
+                keyboardType="decimal-pad"
+              />
+
+              {!!error && <Label>{error}</Label> }
+
+              <Button isLoading={loading} type="primary" onPress={getConfirmation}>Continuar 👉🏼</Button>
+            </>
+          )
+            : (
+              <>
+                <Subtitle>Insira o código enviado por SMS</Subtitle>
+                <Input
+                  mask="[000000]"
+                  onChangeText={(_, extracted) => setCode(extracted || '')}
+                  placeholder="Código recebido"
+                  keyboardType="decimal-pad"
+                />
+                <Button isLoading={loading} type="primary" onPress={signIn}>Pronto 👍🏻</Button>
+              </>
+            ) }
+
+        </Footer>
+
+      </Container>
+    </Wrapper>
   );
 };
 

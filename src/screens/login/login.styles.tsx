@@ -1,34 +1,40 @@
 import styled from 'styled-components/native';
-import { colors, platform, dimensions } from '~/constants';
+import { colors, platform, fonts } from '~/constants';
 
-interface SlideProps {
-  color: string;
-}
 
-interface SlideProps {
-  color: string;
-}
+export const Wrapper = styled.KeyboardAvoidingView`
+`;
 
-export const Slider = styled.ScrollView`
-  height: ${dimensions.fullHeight}px;
-  background: red;
+export const Container = styled.SafeAreaView`
   flex:1;
   display: flex;
-`;
-
-export const Slide = styled.View<SlideProps>`
-  width: ${dimensions.fullWidth}px;
+  padding: 0 20px;
+  margin: 0 20px;
+  justify-content: space-between;
   height: 100%;
-  background: ${(p) => p.color};
 `;
 
-export const Container = styled.KeyboardAvoidingView.attrs({
-  behavior: platform.os === 'ios' ? 'padding' : 'height',
-})`
-  display: flex;
-  flex: 1;
-  justify-content: space-evenly;
-  flex-direction: column;
-  padding: 30px;
-  background: ${colors.white};
+
+export const Header = styled.View`
+  flex: 0.33;
+  justify-content: center;
+  /* background:  green; */
+`;
+
+
+export const Footer = styled.View`
+  flex: 0.33;
+  justify-content: space-around;
+  /* background:  red; */
+`;
+
+export const Title = styled.Text`
+ font-size: 50px;
+ font-family: ${fonts.primary};
+ font-weight: 500;
+`;
+
+export const Subtitle = styled.Text`
+ font-family: ${fonts.primary};
+ font-size: 20px;
 `;

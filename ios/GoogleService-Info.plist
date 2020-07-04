@@ -1,0 +1,36 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
+<plist version="1.0">
+<dict>
+	<key>CLIENT_ID</key>
+	<string>580625418524-r8u2tpfsopj3k0du6a38qbqhvhon5q47.apps.googleusercontent.com</string>
+	<key>REVERSED_CLIENT_ID</key>
+	<string>com.googleusercontent.apps.580625418524-r8u2tpfsopj3k0du6a38qbqhvhon5q47</string>
+	<key>API_KEY</key>
+	<string>AIzaSyBEWhOgYIc7lpMrLoYBcJ682vvpM60ZANg</string>
+	<key>GCM_SENDER_ID</key>
+	<string>580625418524</string>
+	<key>PLIST_VERSION</key>
+	<string>1</string>
+	<key>BUNDLE_ID</key>
+	<string>com.bolt.guapo</string>
+	<key>PROJECT_ID</key>
+	<string>guapo-app</string>
+	<key>STORAGE_BUCKET</key>
+	<string>guapo-app.appspot.com</string>
+	<key>IS_ADS_ENABLED</key>
+	<false></false>
+	<key>IS_ANALYTICS_ENABLED</key>
+	<false></false>
+	<key>IS_APPINVITE_ENABLED</key>
+	<true></true>
+	<key>IS_GCM_ENABLED</key>
+	<true></true>
+	<key>IS_SIGNIN_ENABLED</key>
+	<true></true>
+	<key>GOOGLE_APP_ID</key>
+	<string>1:580625418524:ios:549b39fedc4c14d2a1d2d9</string>
+	<key>DATABASE_URL</key>
+	<string>https://guapo-app.firebaseio.com</string>
+</dict>
+</plist>

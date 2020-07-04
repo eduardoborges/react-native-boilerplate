@@ -1,13 +1,14 @@
 import React, { FunctionComponent } from 'react';
 import { Container, Text, Spinner } from './Button.styles';
-import { Props } from './Button.types';
+import { Props, Button as ButtonProps } from './Button.types';
 import { colors } from '~/constants';
 
-const Button: FunctionComponent<Props> = (props) => {
+
+const Button: FunctionComponent<Props & ButtonProps> = (props) => {
   const { children, isLoading, type } = props;
 
   return (
-    <Container type={type}>
+    <Container type={type} {...props}>
       {isLoading ? (
         <>
           {!type && <Spinner color={colors.primary} />}

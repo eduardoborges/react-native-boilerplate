@@ -1,9 +1,9 @@
 import styled from 'styled-components/native';
 import { colors, fonts } from '~/constants';
-import { Props } from './Button.types';
+import { Props, Button } from './Button.types';
 
 export const Container = styled.TouchableOpacity.attrs({ activeOpacity: 0.8 })<
-  Props
+  Props & Button
 >`
   height: 50px;
   display: flex;

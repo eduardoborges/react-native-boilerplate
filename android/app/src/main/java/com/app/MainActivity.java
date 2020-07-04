@@ -1,4 +1,4 @@
-package com.app;
+package com.bolt.guapo;
 
 import com.facebook.react.ReactActivity;
 
